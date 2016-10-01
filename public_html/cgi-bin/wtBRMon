@@ -90,15 +90,30 @@ echo '"bandwidth" : ['
 
 echo '"leases" : [{'
 
-	CNT=0
-	cat $LEASES_FILE | grep ${LAN_TYPE}| while read ID B IP NAME MAC
+	cat /tmp/dhcp.leases | grep 192.168 | while read ID B IP NAME MAC
 	do
-		if [[ "$CNT" != 0 ]]
+		if [ -f ".lock" ]
 		then
 			echo ','
 		fi
-		CNT=1
+		touch .lock
 		echo '"'$IP'": "'$NAME'"'
 	done
 
+	if [ -f /etc/config/dhcp ]; then
+		cat /etc/config/dhcp | grep "config host" -n | awk -F'[:]' '{print $1}' | while read line
+		do
+			if [ -f ".lock" ]
+			then
+				echo ','
+			fi
+			touch .lock
+			NAME=$(tail -n +$line /etc/config/dhcp | grep -m 1 'option name' | awk '{print $3}')
+			IP=$(tail -n +$line /etc/config/dhcp | grep -m 1 'option ip' | awk '{print $3}')
+			echo ''$IP': '$NAME''
+		done
+	fi
+
 	echo '}]}}'
+
+	rm .lock
