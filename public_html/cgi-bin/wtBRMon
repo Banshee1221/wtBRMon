@@ -108,8 +108,8 @@ echo '"leases" : [{'
 				echo ','
 			fi
 			touch .lock
-			NAME=$(tail -n +$line /etc/config/dhcp | grep -m 1 'option name' | awk '{print $3}')
-			IP=$(tail -n +$line /etc/config/dhcp | grep -m 1 'option ip' | awk '{print $3}')
+			NAME=$(tail -n +$line /etc/config/dhcp | grep -m 1 'option name' | awk '{print $3}' | sed "s/'/\"/g")
+			IP=$(tail -n +$line /etc/config/dhcp | grep -m 1 'option ip' | awk '{print $3}' | sed "s/'/\"/g")
 			echo ''$IP': '$NAME''
 		done
 	fi
