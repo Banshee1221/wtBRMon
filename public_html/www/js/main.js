@@ -79,20 +79,20 @@ $(document).ready(function () {
             x = 0;
         } else {
             var tab = a.split(" ");
-            if (tab[1] == "B/s") x = tab[0];
-            if (tab[1] == "KB/s") x = tab[0]*1024;
-            if (tab[1] == "MB/s") x = tab[0]*1048576;
-            if (tab[1] == "GB/s") x = tab[0]*1073741824;
+            if (tab[1] == "B") x = tab[0];
+            if (tab[1] == "KB") x = tab[0]*1024;
+            if (tab[1] == "MB") x = tab[0]*1048576;
+            if (tab[1] == "GB") x = tab[0]*1073741824;
         }
 
         if (b == "--") {
             y = 0;
         } else {
             var tab = b.split(" ");
-            if (tab[1] == "B/s") y = tab[0];
-            if (tab[1] == "KB/s") y = tab[0]*1024;
-            if (tab[1] == "MB/s") y = tab[0]*1048576;
-            if (tab[1] == "GB/s") y = tab[0]*1073741824;
+            if (tab[1] == "B") y = tab[0];
+            if (tab[1] == "KB") y = tab[0]*1024;
+            if (tab[1] == "MB") y = tab[0]*1048576;
+            if (tab[1] == "GB") y = tab[0]*1073741824;
         }
         return ((x < y) ? -1 : ((x > y) ? 1 : 0));
     };
@@ -105,20 +105,20 @@ $(document).ready(function () {
             x = 0;
         } else {
             var tab = a.split(" ");
-            if (tab[1] == "B/s") x = tab[0];
-            if (tab[1] == "KB/s") x = tab[0]*1024;
-            if (tab[1] == "MB/s") x = tab[0]*1048576;
-            if (tab[1] == "GB/s") x = tab[0]*1073741824;
+            if (tab[1] == "B") x = tab[0];
+            if (tab[1] == "KB") x = tab[0]*1024;
+            if (tab[1] == "MB") x = tab[0]*1048576;
+            if (tab[1] == "GB") x = tab[0]*1073741824;
         }
 
         if (b == "--") {
             y = 0;
         } else {
             var tab = b.split(" ");
-            if (tab[1] == "B/s") y = tab[0];
-            if (tab[1] == "KB/s") y = tab[0]*1024;
-            if (tab[1] == "MB/s") y = tab[0]*1048576;
-            if (tab[1] == "GB/s") y = tab[0]*1073741824;
+            if (tab[1] == "B") y = tab[0];
+            if (tab[1] == "KB") y = tab[0]*1024;
+            if (tab[1] == "MB") y = tab[0]*1048576;
+            if (tab[1] == "GB") y = tab[0]*1073741824;
         }
         return ((x < y) ? 1 : ((x > y) ? -1 : 0));
     };
@@ -154,15 +154,15 @@ $(document).ready(function () {
         //num = num / 8;
 
         if (num > 1099511627776) {
-            num = roundNumber((num / 1099511627776), 3) + " TB/s";
+            num = roundNumber((num / 1099511627776), 3) + " TB";
         } else if (num > 1073741824) {
-            num = roundNumber((num / 1073741824), 2) + " GB/s";
+            num = roundNumber((num / 1073741824), 2) + " GB";
         } else if (num > 1048576) {
-            num = roundNumber((num / 1048576), 2) + " MB/s";
+            num = roundNumber((num / 1048576), 2) + " MB";
         } else if (num > 1024) {
-            num = roundNumber((num / 1024), 1) + " KB/s";
+            num = roundNumber((num / 1024), 1) + " KB";
         } else if (num > 0) {
-            num = Math.round(num) + " B/s";
+            num = Math.round(num) + " B";
         } else {
             num = "0";
         }
