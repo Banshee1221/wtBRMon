@@ -73,7 +73,7 @@ echo '{"data": { "arp" : ['
 
 echo '"QOS" : [{"QOS_DL": '$QOS_DL',"QOS_UP" : '$QOS_UP'}],'
 
-
+#iptables -L delegate_input -vnx -t filter!!!!!!!!!!!!!!!
 echo '"bandwidth" : ['
 	CNT=0
 	iptables -L RRDIPT -vnx -t filter | grep ${LAN_TYPE}| while read PKT BYTE TARGET PROT OPT IN OUT SRC DST
